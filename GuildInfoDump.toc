@@ -1,0 +1,18 @@
+## Interface: 30200
+
+## Title: GuidlInfoDump
+## Notes: Dumps all available guild info to GuildInfoDump.lua in your SavedVariables folder. Use /gdump to do the dump.
+## Author: Quaiche
+## Version: $project-version$
+## X-Category: Misc
+
+## SavedVariables: GuildInfoDumpDB
+
+## OptionalDeps: tekDebug, tekErr
+
+## LoadManagers: AddonLoader
+## X-LoadOn-Slash: /gdump
+
+libs/LibStub.lua
+libs/tekKonfigAboutPanel.lua
+GuildInfoDump.lua
