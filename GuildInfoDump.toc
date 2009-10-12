@@ -5,14 +5,10 @@
 ## Author: Quaiche
 ## Version: $project-version$
 ## X-Category: Misc
-
-## SavedVariables: GuildInfoDumpDB
-
 ## OptionalDeps: tekDebug, tekErr
 
-## LoadManagers: AddonLoader
-## X-LoadOn-Slash: /gdump
+libs\LibStub.lua
+libs\tekKonfigAboutPanel.lua
+libs\QScrollingEditBox.lua
 
-libs/LibStub.lua
-libs/tekKonfigAboutPanel.lua
 GuildInfoDump.lua
