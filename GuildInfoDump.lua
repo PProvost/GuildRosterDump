@@ -71,7 +71,7 @@ function f:GUILD_ROSTER_UPDATE()
 		years, months, days, hours = GetGuildRosterLastOnline(index)
 
 		if not online then
-			lastOnline = string.format("%d years, %d months, %d days, %d hours", years, months, days, hours)
+			lastOnline = string.format("%d years %d months %d days %d hours", years, months, days, hours)
 		else
 			lastOnline = "Now"
 		end
