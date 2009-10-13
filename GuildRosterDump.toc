@@ -1,6 +1,6 @@
 ## Interface: 30200
 
-## Title: GuidlInfoDump
+## Title: GuidlRosterDump
 ## Notes: Dumps all available guild info to GuildInfoDump.lua in your SavedVariables folder. Use /gdump to do the dump.
 ## Author: Quaiche
 ## Version: $project-version$
@@ -11,4 +11,4 @@ libs\LibStub.lua
 libs\tekKonfigAboutPanel.lua
 libs\QScrollingEditBox.lua
 
-GuildInfoDump.lua
+GuildRosterDump.lua
