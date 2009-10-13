@@ -14,7 +14,8 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ]]
 
-local FREQUENCY = 5 * 60 -- 5 mins
+local delim = ","
+local rosterData 
 
 local function Print(...) print("|cFF33FF99GuildInfoDump|r:", ...) end
 local debugf = tekDebug and tekDebug:GetFrame("GuildInfoDump")
@@ -38,11 +39,16 @@ scrollEdit:SetPoint("TOPLEFT", 5, -5)
 scrollEdit:SetPoint("BOTTOMRIGHT", -5, 5)
 f:Hide()
 
+table.insert(UISpecialFrames, "GuildInfoDumpFrame")
 f:SetScript("OnEvent", function(self, event, ...) if self[event] then return self[event](self, event, ...) end end)
 f:RegisterEvent("ADDON_LOADED")
 f:RegisterEvent("GUILD_ROSTER_UPDATE")
 
-table.insert(UISpecialFrames, "GuildInfoDumpFrame")
+f:SetScript("OnShow", function()
+	local csvData = strjoin(delim,"Name","Rank","Level","Class","Zone","Note","OfficerNote","LastOnline","Status") .. "\n"
+	for i = 1,#rosterData do csvData = csvData .. rosterData[i] .. "\n" end
+	scrollEdit:SetText(csvData)
+end)
 
 function f:ADDON_LOADED(event, addon)
 	if addon:lower() ~= "guildinfodump" then return end
@@ -56,37 +62,35 @@ function f:PLAYER_LOGIN()
 end
 
 -- We've got data!
-local csvData
 function f:GUILD_ROSTER_UPDATE()
-	if not f:IsShown() then return end
-
 	local name, rank, rankIndex, level, class, zone, note, officernote, online, status
 	local years, months, days, hours
 	local lastOnline
 
-	csvData = "Name,Rank,Level,Class,Zone,Note,OfficerNote,LastOnline,Status\n"
-
+	--csvData = "Name","Rank","Level","Class","Zone","Note","OfficerNote","LastOnline","Status"
+	rosterData = {}
 	for index = 1,GetNumGuildMembers(true) do
 		name, rank, rankIndex, level, class, zone, note, officernote, online, status = GetGuildRosterInfo(index)
 		years, months, days, hours = GetGuildRosterLastOnline(index)
 
 		if not online then
-			lastOnline = string.format("%d years %d months %d days %d hours", years, months, days, hours)
+			lastOnline = ""
+			if years then lastOnline = lastOnline .. string.format("%d years ", years) end
+			if months then lastOnline = lastOnline .. string.format("%d months ", months) end
+			if days then lastOnline = lastOnline .. string.format("%d days ", days) end
+			if hours then lastOnline = lastOnline .. string.format("%d hours ", hours) end
 		else
 			lastOnline = "Now"
 		end
 
-		csvData = csvData .. string.format("%s,%s,%s,%s,%s,%s,%s,%s,%s\n", name, rank, level, class, zone, note, officernote or "", lastOnline, status)
+		table.insert(rosterData, strjoin(delim, name,rank,level,class,zone,note,(officernote or ""),lastOnline,status))
 	end
-
-	scrollEdit:SetText(csvData)
-	csvData = ""
 end
 
 -- Slash command to force the scan
 SLASH_GUILDINFODUMP1 = "/gdump"
 SlashCmdList.GUILDINFODUMP = function(msg)
-	f:Show()
 	GuildRoster()
+	f:Show()
 end
 
