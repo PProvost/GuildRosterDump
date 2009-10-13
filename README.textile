@@ -6,9 +6,9 @@ This addon introduces a new slash command, /gdump, which addresses this need. Wh
 
 The format of the CSV data is as follows:
 
-Name,Rank,Level,Class,Zone,Note,OfficerNote,LastOnline,Status
+Name;Rank;Level;Class;Zone;Note;OfficerNote;LastOnline;Status
 
-One record per line. A header row is included.
+One record per line, semicolon delimited. A header row is included.
 
 h2. Bugs and Suggestions
 
