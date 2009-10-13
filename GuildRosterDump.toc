@@ -1,10 +1,11 @@
 ## Interface: 30200
 
 ## Title: GuidlRosterDump
-## Notes: Dumps all available guild info to GuildInfoDump.lua in your SavedVariables folder. Use /gdump to do the dump.
+## Notes: Dumps guild roster info to a frame for copy/paste into Excel. Use /gdump to do the dump.
 ## Author: Quaiche
 ## Version: $project-version$
 ## X-Category: Misc
+## X-License: Apache 2.0
 ## OptionalDeps: tekDebug, tekErr
 
 libs\LibStub.lua

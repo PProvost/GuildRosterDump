@@ -25,11 +25,8 @@ Example usage:
 
 assert(LibStub, "QScrollingEditBox requires LibStub")
 
-local lib, oldminor = LibStub:NewLibrary("QScrollingEditBox", 2)
-if not lib then 
-	print("NO SOUP!")
-	return 
-end
+local lib, oldminor = LibStub:NewLibrary("QScrollingEditBox", 1)
+if not lib then return end
 oldminor = oldminor or 0
 
 function lib:New(name, parent)
