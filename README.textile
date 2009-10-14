@@ -2,7 +2,7 @@ h2. Overview
 
 In patch 3.2.2 Blizzard removed the /saveguildroster function for security reasons. So if you have a large guild, or just want to keep a backup of your guild info, you will have no way of tracking your guild info or backing it up to off-realm storage.
 
-This addon introduces a new slash command, /gdump, which addresses this need. When invoked it will pop up an edit box containing the guild roster info in tab-delimited (CSV) format for easy copy-paste into Excel or some other tool. It is very lightweight and uses almost no memory until invoked.
+This addon introduces a new slash command, /gdump, which addresses this need. When invoked it will pop up an edit box containing the guild roster info in tab-delimited (CSV) format for easy copy-paste into Excel or some other tool. It is very lightweight and uses almost no memory or saved variable space.
 
 The format of the CSV data is as follows:
 
