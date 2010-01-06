@@ -66,7 +66,7 @@ f:RegisterEvent("ADDON_LOADED")
 f:RegisterEvent("GUILD_ROSTER_UPDATE")
 
 f:SetScript("OnShow", function()
-	local csvData = strjoin(delim,"Name","Rank","Level","Class","Zone","Note","OfficerNote","LastOnline","Status") .. "\n"
+	local csvData = strjoin(delim,"Name","Rank","RankIndex","Level","Class","Zone","Note","OfficerNote","LastOnline","Status") .. "\n"
 	for i = 1,#rosterData do csvData = csvData .. rosterData[i] .. "\n" end
 	scrollEdit:SetText(csvData)
 end)
@@ -92,14 +92,14 @@ function f:GUILD_ROSTER_UPDATE()
 		if not online then
 			lastOnline = ""
 			if years then lastOnline = lastOnline .. string.format("%d years ", years) end
-			if months then lastOnline = lastOnline .. string.format("%d months ", months) end
-			if days then lastOnline = lastOnline .. string.format("%d days ", days) end
-			if hours then lastOnline = lastOnline .. string.format("%d hours ", hours) end
+			if months then lastOnline = lastOnline .. string.format("%02d months ", months) end
+			if days then lastOnline = lastOnline .. string.format("%02d days ", days) end
+			if hours then lastOnline = lastOnline .. string.format("%02d hours ", hours) end
 		else
 			lastOnline = "Now"
 		end
 
-		table.insert(rosterData, strjoin(delim, name or "", rank or "", level or 0, class or "", zone or "", note or "", officernote or "", lastOnline, status or ""))
+		table.insert(rosterData, strjoin(delim, name or "", rank or "", rankIndex or 99, level or 0, class or "", zone or "", note or "", officernote or "", lastOnline, status or ""))
 	end
 end
 
