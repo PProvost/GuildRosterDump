@@ -14,7 +14,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ]]
 
-local delim = ";"
+local delim = "\t"
 local rosterData 
 
 local function Print(...) print("|cFF33FF99GuildRosterDump|r:", ...) end

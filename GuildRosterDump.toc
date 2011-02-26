@@ -1,4 +1,4 @@
-## Interface: 30300
+## Interface: 40000
 
 ## Title: GuildRosterDump
 ## Notes: Dumps guild roster info to a frame for copy/paste into Excel. Use /gdump to do the dump.
