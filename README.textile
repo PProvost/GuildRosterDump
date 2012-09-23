@@ -10,6 +10,8 @@ Name - Rank - Level - Class - Zone - Note - OfficerNote - LastOnline - Status
 
 One record per line, TAB delimited. A header row is included. Just select, copy and paste into Excel.
 
+IMPORTANT - Since patch 5.0.4, the on-screen editor might not show the TAB characters separating the columns, but they are still there. Just copy-paste it into your program (Excel, Notepad, whatever) and it will work.
+
 h2. Bugs and Suggestions
 
 Please post any bugs and suggestions on the CurseForge project page. Thanks!
